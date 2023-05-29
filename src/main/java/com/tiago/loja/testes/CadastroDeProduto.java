@@ -12,7 +12,17 @@ import java.math.BigDecimal;
 public class CadastroDeProduto {
 
     public static void main(String[] args) {
+        cadastrarProduto();
 
+        Long id = 1l;
+        EntityManager em = JPAUtil.getEntityManager();
+        ProdutoDao produtoDao = new ProdutoDao(em);
+
+        Produto p = produtoDao.buscarPorId(1l);
+        System.out.println(p.getPreco());
+    }
+
+    private static void cadastrarProduto() {
         Categoria celulares = new Categoria("CELULARES");
 
         Produto telefone = new Produto("Galaxy S20 Ultra", "Smartphone", new BigDecimal(990), celulares);
